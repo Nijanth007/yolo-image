@@ -28,4 +28,6 @@ conda create -n yolo_image_search_gpu python=3.11 -y
 conda activate yolo_image_search_gpu
 conda install pytorch==2.5.1 torchvision==0.20.1 pytorch-cuda=12.4 -c pytorch -c nvidia
 pip install -r requirements.txt
-
+```
+##output
+<img width="1916" height="951" alt="image" src="https://github.com/user-attachments/assets/7d02a80b-d8ed-4948-a28c-540c99f050af" />
