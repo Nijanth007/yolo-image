@@ -1,33 +1,111 @@
-# **Computer Vision Search Engine using YOLO11 + Streamlit**
+## YOLO-Based Object Detection System using COCO Dataset
 
-This repository contains a **Computer Vision Search Engine** built using **YOLO11** for object detection and **Streamlit** for the user interface.  
-The system allows users to upload an image and search for objects based on **COCO dataset categories**, visualize predictions, and get bounding-box results in real time.
+## Introduction
 
----
+This project implements a real-time object detection system using the YOLO (You Only Look Once) deep learning model trained on the COCO dataset.
+The application detects multiple objects in images or video streams with high accuracy and fast inference.
+The model is deployed using Streamlit for a simple web-based interface, and experiments are run in VS Code using Conda.
 
-## 🚀 **Features**
+## Dataset & YOLO Model Details (COCO)
+Dataset: COCO (Common Objects in Context)
 
-- YOLO11-based object detection  
-- Supports COCO 80-class object search  
-- Streamlit-powered web UI  
-- Image upload + object search functionality  
-- GPU and CPU setup instructions  
-- Modular codebase:
-  - `app.py` → Streamlit UI  
-  - `inference.py` → Model loading & detection pipeline  
-  - `utils.py` → Helper functions  
-  - `config.py` → Configurations (paths, thresholds)
+Contains 118,000+ training images
 
+80 object classes (person, car, dog, bus, bottle, etc.)
 
-## 📦 **Installation Guide**
+Used for training many state-of-the-art object detection model
+##YOLO Model Used
 
-### **1. Create Environment (GPU)**
+Model Type: YOLOv5 / YOLOv8 (choose your version)
 
-```bash
-conda create -n yolo_image_search_gpu python=3.11 -y
-conda activate yolo_image_search_gpu
-conda install pytorch==2.5.1 torchvision==0.20.1 pytorch-cuda=12.4 -c pytorch -c nvidia
-pip install -r requirements.txt
+Pretrained on COCO
+
+Supports:
+
+Real-time inference
+
+Bounding boxes
+
+Class labels
+
+Confidence scores
+
+## Environment Setup
+Install Conda (if not installed)
+
+Download from: https://docs.conda.io/en/latest/miniconda.html 
+## Create Environment
 ```
-##output
+conda create -n yolo_env python=3.10 -y
+conda activate yolo_env
+```
+## Install Required Packages
+```
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install ultralytics
+pip install streamlit
+pip install opencv-python
+
+```
+## GPU Installation Steps or CPU Installation Steps
+
+GPU (NVIDIA CUDA) Setup
+
+Install NVIDIA GPU Driver
+
+Install CUDA Toolkit (11.8 recommended)
+
+Install cuDNN
+
+Verify installation
+
+```
+nvidia-smi
+
+```
+## Install PyTorch with CUDA support
+
+```
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+## CPU-Only Setup
+
+```
+pip install torch torchvision torchaudio
+
+```
+## How to Run in VS Code using Conda
+1. Open VS Code
+2. Select Conda Environment
+
+Ctrl + Shift + P → Python: Select Interpreter → Choose "yolo_env"
+
+3. Run Script
+```
+python detect.py --source images/test1.jpg
+
+```
+## If using YOLOv8
+```
+yolo detect predict model=yolov8s.pt source=images/
+```
+## How to Deploy using Streamlit
+Run Streamlit App
+```
+streamlit run app.py
+```
+## Output Screenshots
 <img width="1916" height="951" alt="image" src="https://github.com/user-attachments/assets/7d02a80b-d8ed-4948-a28c-540c99f050af" />
+
+## Results
+Results
+
+Achieved real-time object detection at 30–60 FPS (GPU)
+
+High accuracy due to COCO pretrained YOLO model
+
+Successfully deployed application with Streamlit
+
+User-friendly interface for image/video detection
+
+
